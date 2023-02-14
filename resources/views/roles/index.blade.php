@@ -2,55 +2,47 @@
 
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Role Management</h2>
+<div class="card">
+    <div class="card-header" style="justify-content: space-between;">
+        <h4>Role Management</h4>
+        <a href="{{ route('roles.create') }}" class="btn btn-icon icon-left btn-success"><i class="fas fa-times"></i> Create New Role</a>
+    </div>
+    <div class="card-body p-3">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
         </div>
-        <div class="pull-right">
-        @can('role-create')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
-            @endcan
+        @endif
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th width="20%">Action</th>
+                </tr>
+                @foreach ($roles as $key => $role)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $role->name }}</td>
+                    <td>
+                        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i> Show</a>
+                        @can('role-edit')
+                            <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
+                        @endcan
+                        @can('role-delete')
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('del-form').submit();" class="btn btn-icon icon-left btn-danger"><i class="fas fa-times"></i> Delete</a>
+                            
+                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id], 'style'=>'display: none;', 'id' => 'del-form']) !!}
+                                {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
+                            {!! Form::close() !!}
+                        @endcan
+                    </td>
+                </tr>
+                @endforeach
+            </table>
         </div>
     </div>
 </div>
-
-
-@if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
-
-
-<table class="table table-bordered">
-  <tr>
-     <th>No</th>
-     <th>Name</th>
-     <th width="280px">Action</th>
-  </tr>
-    @foreach ($roles as $key => $role)
-    <tr>
-        <td>{{ ++$i }}</td>
-        <td>{{ $role->name }}</td>
-        <td>
-            <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
-            @can('role-edit')
-                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
-            @endcan
-            @can('role-delete')
-                {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                {!! Form::close() !!}
-            @endcan
-        </td>
-    </tr>
-    @endforeach
-</table>
-
-
 {!! $roles->render() !!}
 
-
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 @endsection
