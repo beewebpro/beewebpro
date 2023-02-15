@@ -7,11 +7,15 @@
         <!-- General CSS Files -->
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/app.min.css') }}" />
         <!-- Template CSS -->
+        <link rel="stylesheet" href="{{ asset('bwp/assets/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/components.css') }}" />
         <!-- Custom style CSS -->
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/custom.css') }}" />
         <link rel='shortcut icon' type='image/x-icon' href='{{ asset('bwp/assets/img/favicon.ico') }}' />
+        
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
 
     <body>
@@ -37,5 +41,7 @@
         <script src="{{ asset('bwp/assets/js/scripts.js') }}"></script>
         <!-- Custom JS File -->
         <script src="{{ asset('bwp/assets/js/custom.js') }}"></script>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>

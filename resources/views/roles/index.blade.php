@@ -44,5 +44,4 @@
     </div>
 </div>
 {!! $roles->render() !!}
-
 @endsection
