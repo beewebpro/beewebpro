@@ -49,7 +49,7 @@ class UserController extends Controller
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-    
+        
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     

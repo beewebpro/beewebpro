@@ -2,11 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,4 +25,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('brands', BrandController::class);
+    Route::resource('standards', ProductStandardController::class);
+    Route::resource('origins', ProductTrackingController::class);
+    Route::resource('nutritions', ProductNutritionController::class);
+    Route::resource('tags', ProductTagController::class);
+    Route::resource('reviews', ProductReviewController::class);
+    Route::resource('product-categories', ProductCategoryController::class);
 });

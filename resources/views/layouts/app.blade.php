@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ asset('bwp/assets/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/components.css') }}" />
+        @stack('style')
         <!-- Custom style CSS -->
         <link rel="stylesheet" href="{{ asset('bwp/assets/css/custom.css') }}" />
         <link rel='shortcut icon' type='image/x-icon' href='{{ asset('bwp/assets/img/favicon.ico') }}' />
@@ -35,6 +36,7 @@
         <script src="{{ asset('bwp/assets/js/app.min.js') }}"></script>
         <!-- JS Libraies -->
         <script src="{{ asset('bwp/assets/bundles/apexcharts/apexcharts.min.js') }}"></script>
+        @stack('scripts')
         <!-- Page Specific JS File -->
         <script src="{{ asset('bwp/assets/js/page/index.js') }}"></script>
         <!-- Template JS File -->

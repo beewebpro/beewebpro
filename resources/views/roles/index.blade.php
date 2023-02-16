@@ -30,10 +30,8 @@
                             <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
                         @endcan
                         @can('role-delete')
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('del-form').submit();" class="btn btn-icon icon-left btn-danger"><i class="fas fa-times"></i> Delete</a>
-                            
-                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id], 'style'=>'display: none;', 'id' => 'del-form']) !!}
-                                {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
+                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                             {!! Form::close() !!}
                         @endcan
                     </td>

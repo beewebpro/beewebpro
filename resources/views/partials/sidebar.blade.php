@@ -5,21 +5,27 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
-            <li class="dropdown active">
+            <li class="dropdown {{ Route::is('home.*') ? 'active' : '' }}">
                 <a href="/" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ Route::is('users.*') || Route::is('roles.*')  ? 'active' : '' }}">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="user-check"></i><span>Auth</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ route('users.index') }}">Users</a></li>
-                    <li><a href="{{ route('roles.index') }}">Roles</a></li>
+                    <li class="{{ Route::is('users.*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
+                    <li class="{{ Route::is('roles.*')  ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Widgets</span></a>
+            <li class="dropdown {{ Route::is('products.*') ? 'active' : '' }}">
+                <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Ecommerce</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="widget-chart.html">Chart Widgets</a></li>
-                    <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
+                    <li><a class="nav-link" href="{{ route('products.index') }}">Cooking ingredients</a></li>
+                    <li><a class="nav-link" href="{{ route('product-categories.index') }}">Categories</a></li>
+                    <li><a class="nav-link" href="{{ route('brands.index') }}">Brands</a></li>
+                    <li><a class="nav-link" href="{{ route('standards.index') }}">Standards</a></li>
+                    <li><a class="nav-link" href="{{ route('origins.index') }}">Origins</a></li>
+                    <li><a class="nav-link" href="{{ route('nutritions.index') }}">Nutritions</a></li>
+                    <li><a class="nav-link" href="{{ route('tags.index') }}">Tags</a></li>
+                    <li><a class="nav-link" href="{{ route('reviews.index') }}">Reviews</a></li>
                 </ul>
             </li>
             <li class="dropdown">
