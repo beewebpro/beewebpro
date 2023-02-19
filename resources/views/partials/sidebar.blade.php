@@ -15,17 +15,25 @@
                     <li class="{{ Route::is('roles.*')  ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ Route::is('products.*') ? 'active' : '' }}">
+            <li class="dropdown {{ Route::is('products.*') 
+                                || Route::is('product-categories.*') 
+                                || Route::is('brands.*') 
+                                || Route::is('standards.*') 
+                                || Route::is('origins.*') 
+                                || Route::is('nutritions.*') 
+                                || Route::is('tags.*') 
+                                || Route::is('reviews.*') 
+                                ? 'active' : '' }}">
                 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="briefcase"></i><span>Ecommerce</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('products.index') }}">Cooking ingredients</a></li>
-                    <li><a class="nav-link" href="{{ route('product-categories.index') }}">Categories</a></li>
-                    <li><a class="nav-link" href="{{ route('brands.index') }}">Brands</a></li>
-                    <li><a class="nav-link" href="{{ route('standards.index') }}">Standards</a></li>
-                    <li><a class="nav-link" href="{{ route('origins.index') }}">Origins</a></li>
-                    <li><a class="nav-link" href="{{ route('nutritions.index') }}">Nutritions</a></li>
-                    <li><a class="nav-link" href="{{ route('tags.index') }}">Tags</a></li>
-                    <li><a class="nav-link" href="{{ route('reviews.index') }}">Reviews</a></li>
+                    <li class="{{ Route::is('products.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('products.index') }}">Cooking ingredients</a></li>
+                    <li class="{{ Route::is('product-categories.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('product-categories.index') }}">Categories</a></li>
+                    <li class="{{ Route::is('brands.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('brands.index') }}">Brands</a></li>
+                    <li class="{{ Route::is('standards.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('standards.index') }}">Standards</a></li>
+                    <li class="{{ Route::is('origins.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('origins.index') }}">Origins</a></li>
+                    <li class="{{ Route::is('nutritions.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('nutritions.index') }}">Nutritions</a></li>
+                    <li class="{{ Route::is('tags.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('tags.index') }}">Tags</a></li>
+                    <li class="{{ Route::is('reviews.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('reviews.index') }}">Reviews</a></li>
                 </ul>
             </li>
             <li class="dropdown">

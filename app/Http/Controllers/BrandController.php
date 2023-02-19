@@ -38,7 +38,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brands.create');
     }
 
     /**
@@ -48,8 +48,20 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $request->validate([
+            'name' => 'required|unique:brands',
+            'image' => 'required|mimes:png,jpg,gif|max:1024',
+        ]);
+        $image = $request->file('image');
+        $fileName = $image->getClientOriginalName();
+        $image->move(public_path('uploads'), $fileName);
+        $request->merge(['logo' => $fileName]);
+        
+        Brand::create($request->all());
+    
+        return redirect()->route('brands.index')
+                        ->with('success','Product created successfully.');
     }
 
     /**
