@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Standard;
 use Illuminate\Http\Request;
 
 class ProductStandardController extends Controller
@@ -11,9 +12,23 @@ class ProductStandardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        //  $this->middleware('permission:standard-list|standard-create|standard-edit|standard-delete', ['only' => ['index','show']]);
+        //  $this->middleware('permission:standard-create', ['only' => ['create','store']]);
+        //  $this->middleware('permission:standard-edit', ['only' => ['edit','update']]);
+        //  $this->middleware('permission:standard-delete', ['only' => ['destroy']]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        //
+        $standards = Standard::latest()->paginate(5);
+        return view('standards.index',compact('standards'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
